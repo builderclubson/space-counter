@@ -1,0 +1,84 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="en">\
+<head>\
+  <meta charset="UTF-8">\
+  <title>Space Counter</title>\
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+  <style>\
+    body \{\
+      margin: 0;\
+      background: radial-gradient(circle at top, #0b0f2a, #000);\
+      color: white;\
+      font-family: Arial, sans-serif;\
+      display: flex;\
+      justify-content: center;\
+      align-items: center;\
+      height: 100vh;\
+      text-align: center;\
+    \}\
+    .container \{\
+      max-width: 600px;\
+      padding: 20px;\
+    \}\
+    h1 \{\
+      font-size: 2rem;\
+      margin-bottom: 20px;\
+    \}\
+    .counter \{\
+      font-size: 2.5rem;\
+      font-weight: bold;\
+      margin: 20px 0;\
+    \}\
+    .label \{\
+      font-size: 1rem;\
+      opacity: 0.8;\
+    \}\
+    footer \{\
+      margin-top: 30px;\
+      font-size: 0.8rem;\
+      opacity: 0.6;\
+    \}\
+  </style>\
+</head>\
+<body>\
+\
+<div class="container">\
+  <h1>How Far Light Has Traveled Today</h1>\
+\
+  <div class="counter" id="distance">0 km</div>\
+  <div class="label">Updating in real time</div>\
+\
+  <footer>\
+    Based on the speed of light in a vacuum (299,792 km/s)\
+  </footer>\
+</div>\
+\
+<script>\
+  const speedOfLight = 299792; // km per second\
+\
+  function updateCounter() \{\
+    const now = new Date();\
+    const startOfDay = new Date();\
+    startOfDay.setHours(0, 0, 0, 0);\
+\
+    const secondsToday = (now - startOfDay) / 1000;\
+    const distance = secondsToday * speedOfLight;\
+\
+    document.getElementById("distance").textContent =\
+      distance.toLocaleString(undefined, \{ maximumFractionDigits: 0 \}) + " km";\
+  \}\
+\
+  updateCounter();\
+  setInterval(updateCounter, 1000);\
+</script>\
+\
+</body>\
+</html>\
+}
